@@ -1,0 +1,7 @@
+composer.phar
+.idea/
+/uploads/
+/vendor/
+/logs/*
+!/logs/README.md
+.env

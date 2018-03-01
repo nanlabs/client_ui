@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?= $title ?></title>
+    <?php include '_css.phtml' ?>
+    <link rel="stylesheet" href="css/app.css">
+    <?php if(!empty($styles)): ?>
+        <?php foreach( $styles as $style ): ?>
+        <link rel="stylesheet" href="<?=$style?>">
+        <?php endforeach ?>
+    <?php endif ?>
+</head>
+<body>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+<h5 class="my-0 mr-md-auto font-weight-normal"><a href="/"><img src="img/isologo.png" class="logo" ></a></h5>
+    <a class="btn btn-outline-primary" href="/logout">Logout</a>
+</div>
+
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link <?= $tab === 'home' ? 'active' : ''?>" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?= $tab === 'upload' ? 'active' : ''?>" href="/upload">File Upload</a>
+        </li>
+    </ul>
+    <?= $content ?>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            <div class="col-12 col-md">
+                <small class="d-block mb-3 text-muted">Copyright &copy; Plena Data 2018</small>
+            </div>
+        </div>
+    </footer>
+</div>
+<?php include '_js.phtml' ?>
+<?php if(!empty($scripts)): ?>
+    <?php foreach( $scripts as $script ): ?>
+        <script src="<?=$script ?>"></script>
+    <?php endforeach ?>
+<?php endif ?>
+</body>
+</html>

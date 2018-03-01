@@ -1,0 +1,37 @@
+<?php
+$title = 'Upload File';
+$tab = 'upload';
+$dropZoneCDN = 'https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/';
+$styles = [$dropZoneCDN . 'dropzone.min.css'];
+$scripts = [
+        $dropZoneCDN . 'dropzone.min.js',
+        'js/upload.js'
+];
+?>
+
+<?php ob_start() ?>
+
+    <div class="row justify-content-md-center my-5 ">
+        <div class="col-8">
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Location</label>
+                    <select class="form-control" id="location">
+                        <?php foreach( $locations as $location): ?>
+                            <option value="<?= $location['id'] ?>"><?= $location['file_type_name'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+            </form>
+            <form action="/upload"
+                  class="dropzone"
+                  id="file-dropzone">
+            </form>
+            <div>
+                <button  class="btn btn-primary mb-2 my-5 float-right">Submit</button>
+            </div>
+        </div>
+    </div>
+<?php $content = ob_get_clean() ?>
+
+<?php include '_app_layout.phtml' ?>

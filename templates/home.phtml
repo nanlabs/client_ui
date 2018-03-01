@@ -1,0 +1,55 @@
+<?php
+    $title = 'Home';
+    $tab = 'home';
+?>
+
+<?php ob_start() ?>
+
+
+    <h4 class="my-4 py-2">Report Links</h4>
+    <table class="table my-4">
+        <thead class="thead-default">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">URL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($reportLinks as $idx => $reportLink): ?>
+            <th scope="row"><?= $idx + 1 ?></th>
+            <td><?= $reportLink['name'] ?></td>
+            <td>
+                <a class="text-dark" target="_blank"
+                   href="<?= $reportLink['url'] ?>"><?= $reportLink['url'] ?>
+                </a>
+            </td>
+            </tr>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+    <h4 class="my-4">Dashboard Links</h4>
+    <table class="table my-4">
+        <thead class="thead-default">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">URL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($dashboardLinks as $idx => $dashboardLink): ?>
+            <th scope="row"><?= $idx + 1 ?></th>
+            <td><?= $dashboardLink['name'] ?></td>
+            <td>
+                <a class="text-dark" target="_blank"
+                   href="<?= $dashboardLink['url'] ?>"><?= $dashboardLink['url'] ?>
+                </a>
+            </td>
+            </tr>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+<?php $content = ob_get_clean() ?>
+
+<?php include '_app_layout.phtml' ?>

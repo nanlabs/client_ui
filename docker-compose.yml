@@ -1,0 +1,26 @@
+version: '2'
+
+volumes:
+    logs:
+        driver: local
+
+services:
+    php:
+      build: docker
+      ports:
+        - "8080:80"
+      volumes:
+        - .:/var/www/html
+        - logs:/vars/www/html/logs
+      links:
+        - db
+      environment:
+        - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    db:
+      image: mysql:5.7
+      volumes:
+       - /var/lib/mysql
+       - ./sql/init.sql:/docker-entrypoint-initdb.d/sql.sql
+      environment:
+       - MYSQL_ROOT_PASSWORD=root
+       - MYSQL_DATABASE=base
