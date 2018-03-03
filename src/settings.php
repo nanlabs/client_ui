@@ -22,9 +22,6 @@ return [
             'user' => getenv('DB_USER'),
             'pass' => getenv('DB_PASS')
         ],
-
-        'uploadsPath' => getenv('UPLADS_PATH'),
-
         'mailgun' => [
             'apiKey' => getenv('MAILGUN_APIKEY'),
             'domain' => getenv('MAILGUN_DOMAIN'),

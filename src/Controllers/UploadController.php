@@ -16,7 +16,7 @@ class UploadController extends Controller
         $form = $request->getParsedBody();
         $location = $this->getLocationPath($form['location']);
         if($file->getError() === UPLOAD_ERR_OK) {
-            $path = '/var/www/html' . $location['path'];
+            $path = $location['path'];
             mkdir($path, 0755, true);
             $file->moveTo( $path . $file->getClientFilename());
             return $response->withJson(['status' => 'uploaded']);
